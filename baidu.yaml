@@ -1,0 +1,32 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: :9999
+dns:
+  enabled: true
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  fallback:
+    - 8.8.8.8
+    - 8.8.4.4
+    - tls://1.0.0.1:853
+    - tls://dns.google:853
+proxies: 
+  - {name: 南京联通, server: 153.3.237.117, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
+  - {name: 苏州联通, server: 157.0.148.53, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
+  - {name: 保定联通, server: 110.242.70.69, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
+  - {name: 广东百度直连, server: 183.240.98.84, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
+proxy-groups:
+  - name: 万物直连
+    type: select
+    proxies:
+      - 南京联通
+      - 苏州联通
+      - 保定联通
+      - 广东百度直连
+rules:
+  - GEOIP,CN,万物直连
+  - MATCH,万物直连
