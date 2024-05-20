@@ -16,17 +16,15 @@ dns:
     - tls://dns.google:853
 proxies: 
   - {name: 广东百度直连, server: 183.240.98.84, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
-  - {name: 南京联通, server: 153.3.237.117, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
-  - {name: 苏州联通, server: 157.0.148.53, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
-  - {name: 保定联通, server: 110.242.70.69, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
+  - {name: 南京_联通, server: 153.3.237.117, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
+  - {name: 苏州_联通, server: 157.0.148.53, port: 443, type: http, headers: {X-T5-Auth: 683556433, Host: 153.3.236.22:443}}
 proxy-groups:
   - name: 万物直连
     type: select
     proxies:
       - 广东百度直连
-      - 南京联通
-      - 苏州联通
-      - 保定联通
+      - 南京_联通
+      - 苏州_联通
 rules:
   - GEOIP,CN,万物直连
   - MATCH,万物直连
